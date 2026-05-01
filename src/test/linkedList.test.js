@@ -33,17 +33,17 @@ describe('Linked List functionality', () => {
     it('Append', () => {
         list.append("hello");
 1
-        expect(list.tail.value).toEqual("hello");
+        expect(list.tail()).toEqual("hello");
     });
 
     it('Prepend', () => {
         list.prepend("hey");
 
-        expect(list.head.value).toEqual("hey");
-        expect(list.tail.value).toEqual("turtle");
+        expect(list.head()).toEqual("hey");
+        expect(list.tail()).toEqual("turtle");
     });
 
-    describe('Returns size', () => {
+    describe('Returns correct size', () => {
         it('Returns the correct size with append', () => {
             expect(list.size()).toEqual(6);
         });
@@ -52,6 +52,14 @@ describe('Linked List functionality', () => {
             list.prepend('hello');
             expect(list.size()).toEqual(7);
         });
+    });
+
+    it('Returns head value', () => {
+        expect(list.head()).toEqual('dog');
+    });
+
+    it('Returns tail value', () => {
+        expect(list.tail()).toEqual('turtle');
     });
 });
 
