@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "./src/popup.js",
   "scripts": {
-    "dev:tests": "jest --watch",
-    "test": "jest --watchAll --verbose",
+    "dev:test": "jest --watchAll --verbose",
+    "test": "jest --watchAll=false --verbose",
     "debug": "node --debug-brk --inspect ./node_modules/jest/bin/jest -i"
   },
   "keywords": [],
