@@ -15,7 +15,9 @@ export class LinkedList {
     }
 
     prepend(value) {
-        
+        let node = new Node(value, this.head);
+
+        this.head = node;
     }
 }
 
@@ -31,24 +33,6 @@ export class Node {
 
 
 /* 
-Okay, we are making the LinkedList itself and we are making the node class which will
-offer a good bit of the functionality. 
-
-Node will contain reference to previous and next
-LinkedList will contain the head, tail, and then the functions for operating on the list
-
-Functions: 
-append(value)
-prepend(value)
-size()
-head()
-tail()
-at(index)
-pop()
-contains(value)
-findIndex(value)
-toString()
-insertAt()
-removeAt(index)
-
+Okay, we're now adding a value to the front. This means that we have to make the next value the current head
+then make the new head value the one we added
 */
