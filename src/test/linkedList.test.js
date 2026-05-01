@@ -15,7 +15,7 @@ function printList(linkedList) {
 describe('Linked List functionality', () => {
     let list = undefined;
 
-    beforeAll(() => {
+    beforeEach(() => {
         list = new LinkedList();
 
         list.append("dog");
@@ -30,16 +30,28 @@ describe('Linked List functionality', () => {
         expect(LinkedList).toBeDefined();
     });
 
-    it('Appends a value', () => {
-        list.append("Hello");
-
-        expect(list.tail.value).toEqual("Hello");
+    it('Append', () => {
+        list.append("hello");
+1
+        expect(list.tail.value).toEqual("hello");
     });
 
-    it('Prepends a value', () => {
-        list.prepend("Hey");
+    it('Prepend', () => {
+        list.prepend("hey");
 
-        expect(list.head.value).toEqual("Hey");
+        expect(list.head.value).toEqual("hey");
+        expect(list.tail.value).toEqual("turtle");
+    });
+
+    describe('Returns size', () => {
+        it('Returns the correct size with append', () => {
+            expect(list.size()).toEqual(6);
+        });
+
+        it('Returns correct size after prepend', () => {
+            list.prepend('hello');
+            expect(list.size()).toEqual(7);
+        });
     });
 });
 

@@ -1,5 +1,5 @@
 ✔ append(value) @done(26-05-01 12:03)
-☐ prepend(value)
+✔ prepend(value) @done(26-05-01 12:05)
 ☐ size()
 ☐ head()
 ☐ tail()
@@ -10,3 +10,5 @@
 ☐ toString()
 ☐ insertAt()
 ☐ removeAt(index)
+
+When testing with jest, should the describe block be used to test an entire class, or should a new describe block be used for each function? Or would this depend on the complexity of the class?

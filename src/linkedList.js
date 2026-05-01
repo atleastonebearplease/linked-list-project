@@ -18,6 +18,12 @@ export class LinkedList {
         let node = new Node(value, this.head);
 
         this.head = node;
+
+        this.length += 1;
+    }
+
+    size() {
+        return this.length;
     }
 }
 
