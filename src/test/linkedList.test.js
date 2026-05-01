@@ -2,14 +2,18 @@ import { LinkedList } from "../linkedList.js";
 import { Node } from "../linkedList.js";
 
 function printList(linkedList) {
-    let node = linkedList.head;
+    let node = linkedList.headNode;
 
     if(node === null) console.log("Nothing to print");
 
+    let listString = "";
+
     while(node !== null) {
-        console.log(node.value);
+        listString += node.value + "\n";
         node = node.next;
     }
+
+    console.log(listString);
 }
 
 describe('Linked List functionality', () => {
@@ -34,13 +38,20 @@ describe('Linked List functionality', () => {
         list.append("hello");
 1
         expect(list.tail()).toEqual("hello");
+
+        expect(list.size()).toEqual(7);
+
+        printList(list);
     });
 
     it('Prepend', () => {
         list.prepend("hey");
 
         expect(list.head()).toEqual("hey");
+        expect(list.headNode.next.value).toEqual('dog');
         expect(list.tail()).toEqual("turtle");
+        expect(list.size()).toEqual(7);
+        printList(list);
     });
 
     describe('Returns correct size', () => {
@@ -60,6 +71,16 @@ describe('Linked List functionality', () => {
 
     it('Returns tail value', () => {
         expect(list.tail()).toEqual('turtle');
+    });
+    
+    describe('At', () => {
+        it('Returns value at index', () => {
+            expect(list.at(3)).toEqual('hamster');
+        });
+
+        it('Returns undefined for out of bounds index', () => {
+            expect(list.at(100)).toEqual(undefined);
+        });
     });
 });
 

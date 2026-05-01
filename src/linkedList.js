@@ -1,23 +1,29 @@
 export class LinkedList {
-    #headNode = null;
-    #tailNode = null;
+    headNode = null;
+    tailNode = null;
     length = 0;
 
     append(value) {
         let node = new Node(value, null);
 
-        if(this.#tailNode !== null) this.#tailNode.next = node;
-        this.#tailNode = node;
+        if(this.tailNode !== null) this.tailNode.next = node;
+        this.tailNode = node;
 
-        if(this.length === 0) this.#headNode = node;
+        if(this.length === 0) this.headNode = node;
 
         this.length += 1;
     }
 
     prepend(value) {
-        let node = new Node(value, this.#headNode);
+        let node = new Node(value, null);
 
-        this.#headNode = node;
+        if(this.headNode === null) {
+            this.length += 1;
+            return;
+        }
+
+        node.next = this.headNode;
+        this.headNode = node;
 
         this.length += 1;
     }
@@ -27,11 +33,23 @@ export class LinkedList {
     }
 
     head() {
-        return this.#headNode.value;
+        return this.headNode.value;
     }
 
     tail() {
-        return this.#tailNode.value;
+        return this.tailNode.value;
+    }
+
+    at(index) {
+        if(index < 0 || index > this.size() - 1) return undefined;
+
+        let node = this.headNode;
+
+        for(let i = 0; i < index; i++) {
+            node = node.next;
+        }
+
+        return node.value;
     }
 }
 
