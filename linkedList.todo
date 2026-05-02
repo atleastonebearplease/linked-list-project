@@ -1,10 +1,14 @@
 ✔ append(value) @done(26-05-01 12:03)
 ✔ prepend(value) @done(26-05-01 12:05)
-☐ size()
-☐ head()
+✔ size() @done(26-05-01 12:22)
+✔ head() @done(26-05-01 16:25)
+    Return the head value
 ☐ tail()
-☐ at(index)
+    ✔ Return the tail value @done(26-05-01 16:25)
+✔ at(index) @done(26-05-01 16:55)
+    Return undefined if the index doesn't exist
 ☐ pop()
+    Remove the head node and return the value
 ☐ contains(value)
 ☐ findIndex(value)
 ☐ toString()

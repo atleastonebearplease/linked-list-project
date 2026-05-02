@@ -6,10 +6,15 @@ export class LinkedList {
     append(value) {
         let node = new Node(value, null);
 
-        if(this.tailNode !== null) this.tailNode.next = node;
-        this.tailNode = node;
+        if(this.size() === 0) {
+            this.headNode = node;
+            this.tailNode = node;
+            this.length += 1;
+            return;
+        }
 
-        if(this.length === 0) this.headNode = node;
+        this.tailNode.next = node;
+        this.tailNode = node;
 
         this.length += 1;
     }
@@ -17,7 +22,9 @@ export class LinkedList {
     prepend(value) {
         let node = new Node(value, null);
 
-        if(this.headNode === null) {
+        if(this.size() === 0) {
+            this.headNode = node;
+            this.tailNode = node;
             this.length += 1;
             return;
         }
@@ -51,6 +58,22 @@ export class LinkedList {
 
         return node.value;
     }
+
+    pop() {
+        if(this.size() === 0) {
+            return undefined;
+        } 
+        
+        const headValue = this.head();
+        this.headNode = this.headNode.next; //If its null, that's okay
+        this.length -= 1;
+
+        if(this.length === 0) {
+            this.tailNode = null;
+        }
+
+        return headValue;
+    }
 }
 
 export class Node {
@@ -65,6 +88,6 @@ export class Node {
 
 
 /* 
-Okay, we're now adding a value to the front. This means that we have to make the next value the current head
-then make the new head value the one we added
+============THINKING==================
+
 */

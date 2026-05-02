@@ -82,6 +82,28 @@ describe('Linked List functionality', () => {
             expect(list.at(100)).toEqual(undefined);
         });
     });
+
+    describe('Pop', () => {
+        it('Returns the head value', () => {
+            expect(list.pop()).toEqual('dog');
+        });
+
+        it('Correctly moves the head value', () => {
+            list.pop();
+            expect(list.head()).toEqual('cat');
+        });
+
+        it('Correctly updates length', () => {
+            list.pop();
+            expect(list.size()).toEqual(5);
+        });
+
+        it('Returns undefined on empty list', () => {
+            let emptyList = new LinkedList();
+
+            expect(emptyList.pop()).toEqual(undefined);
+        });
+    });
 });
 
 describe('Node functionality', () => {
@@ -89,3 +111,12 @@ describe('Node functionality', () => {
         expect(Node).toBeDefined();
     });
 });
+
+/* 
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+*/
