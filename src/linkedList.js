@@ -122,6 +122,42 @@ export class LinkedList {
 
         return listString;
     }
+
+    insertAt(index, ...values) {
+        if(index < 0 || index >= this.size()) throw new RangeError("This index is out of range");
+
+        let indexNode = this.headNode;
+        let nodeBeforeIndex = null;
+
+        //Find the index node
+        for(let i = 0; i < index; i++) {
+            nodeBeforeIndex = indexNode;
+            indexNode = indexNode.next;
+        }
+
+        let firstNewNode = new Node(values[0], null);
+
+        //If we are at the beginning, then this first new node is the new head node
+        if(index === 0) {
+            firstNewNode.next = this.headNode;
+            this.headNode = firstNewNode;
+        }
+
+        let currentNode = firstNewNode;
+        this.length += 1;
+
+        for(let i = 1; i < values.length; i++) {
+            let newNode = new Node(values[i], indexNode);
+            currentNode.next = newNode;
+            currentNode = newNode; //Move our node 'pointer' to the front of the new list
+
+            this.length += 1;
+        }
+
+        //If we are inserting at the beginning, nodeBeforeIndex is null
+        if(nodeBeforeIndex !== null) nodeBeforeIndex.next = firstNewNode; 
+        currentNode.next = indexNode; //Set the next of the end of our new sublist to be the node at the original index point
+    }
 }
 
 export class Node {

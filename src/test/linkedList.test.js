@@ -1,21 +1,6 @@
 import { LinkedList } from "../linkedList.js";
 import { Node } from "../linkedList.js";
 
-function printList(linkedList) {
-    let node = linkedList.headNode;
-
-    if(node === null) console.log("Nothing to print");
-
-    let listString = "";
-
-    while(node !== null) {
-        listString += node.value + "\n";
-        node = node.next;
-    }
-
-    console.log(listString);
-}
-
 describe('Linked List functionality', () => {
     let list = undefined;
 
@@ -40,8 +25,6 @@ describe('Linked List functionality', () => {
         expect(list.tail()).toEqual("hello");
 
         expect(list.size()).toEqual(7);
-
-        printList(list);
     });
 
     it('Prepend', () => {
@@ -51,7 +34,6 @@ describe('Linked List functionality', () => {
         expect(list.headNode.next.value).toEqual('dog');
         expect(list.tail()).toEqual("turtle");
         expect(list.size()).toEqual(7);
-        printList(list);
     });
 
     describe('Returns correct size', () => {
@@ -135,6 +117,63 @@ describe('Linked List functionality', () => {
     describe('ToString()', () => {
         it('Creates correct string', () => {
             expect(list.toString()).toEqual("( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> null");
+        });
+    });
+
+    describe('InsertAt()', () => {
+        it('Inserts a single value', () => {
+            list.insertAt(1, 'sheep');
+
+            expect(list.at(1)).toEqual('sheep');
+            expect(list.at(2)).toEqual('cat');
+            expect(list.size()).toEqual(7);
+
+            console.log(list.toString());
+        });
+
+        it("Inserts multiple values", () => {
+            list.insertAt(1, 'sheep', 'goat');
+
+            console.log(list.toString());
+
+            expect(list.at(1)).toEqual('sheep');
+            expect(list.at(2)).toEqual('goat');
+            expect(list.at(3)).toEqual('cat');
+
+            expect(list.size()).toEqual(8);
+        });
+
+        it("Inserts at beginning", () => {
+            list.insertAt(0, 'sheep');
+
+            expect(list.at(0)).toEqual('sheep');
+        });
+
+        it("Inserts at end", () => {
+            list.insertAt(5, 'sheep');
+
+            expect(list.at(5)).toEqual('sheep');
+            expect(list.at(6)).toEqual('turtle');
+        });
+
+        it("Inserts multiple values at beginning", () => {
+            list.insertAt(0, 'sheep', 'goat');
+
+            expect(list.at(0)).toEqual('sheep');
+            expect(list.at(1)).toEqual('goat');
+            expect(list.at(2)).toEqual('dog');
+
+            console.log(list.toString());
+        });
+
+        it("Inserts multiple values at end", () => {
+            list.insertAt(5, 'sheep', 'goat');
+
+            expect(list.at(5)).toEqual('sheep');
+            expect(list.at(6)).toEqual('goat');
+            expect(list.at(7)).toEqual('turtle');
+
+            console.log(list.toString());
         });
     });
 });
