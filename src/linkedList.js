@@ -90,6 +90,22 @@ export class LinkedList {
 
         return false;
     }
+
+    findIndex(value) {
+        let index = 0;
+        let curNode = this.headNode;
+
+        while(curNode !== null) {
+            if(curNode.value === value) {
+                return index;
+            }
+
+            curNode = curNode.next;
+            index++;
+        }
+
+        return -1;
+    }
 }
 
 export class Node {

@@ -118,6 +118,17 @@ describe('Linked List functionality', () => {
             expect(list.contains('hello')).toEqual(false);
         });
     });
+
+    describe('FindIndex(value)', () => {
+        it('Correctly finds index of value', () => {
+            expect(list.findIndex('snake')).toEqual(4);
+            expect(list.findIndex('dog')).toEqual(0);
+        });
+
+        it('Returns -1 if the value is not found', () => {
+            expect(list.findIndex('hello')).toEqual(-1);
+        });
+    });
 });
 
 describe('Node functionality', () => {
