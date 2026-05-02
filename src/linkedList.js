@@ -74,6 +74,22 @@ export class LinkedList {
 
         return headValue;
     }
+
+    contains(value) {
+        if(this.size() === 0) return false;
+
+        let curNode = this.headNode;
+
+        while(curNode != null) {
+            if(curNode.value === value) {
+                return true;
+            } else {
+                curNode = curNode.next;
+            }
+        }
+
+        return false;
+    }
 }
 
 export class Node {

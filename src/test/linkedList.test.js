@@ -104,6 +104,20 @@ describe('Linked List functionality', () => {
             expect(emptyList.pop()).toEqual(undefined);
         });
     });
+
+    describe('Contains', () => {
+        it('Returns true if a value is contained', () => {
+            expect(list.contains('turtle')).toEqual(true);
+        });
+
+        it('Returns false if a value is not contained or is empty', () => {
+            expect(list.contains('hello')).toEqual(false);
+            
+            let newList = new LinkedList();
+
+            expect(list.contains('hello')).toEqual(false);
+        });
+    });
 });
 
 describe('Node functionality', () => {
