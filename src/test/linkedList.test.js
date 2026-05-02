@@ -129,6 +129,14 @@ describe('Linked List functionality', () => {
             expect(list.findIndex('hello')).toEqual(-1);
         });
     });
+
+    /*  ( value ) -> ( value ) -> ( value ) -> null. */
+
+    describe('ToString()', () => {
+        it('Creates correct string', () => {
+            expect(list.toString()).toEqual("( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> null");
+        });
+    });
 });
 
 describe('Node functionality', () => {

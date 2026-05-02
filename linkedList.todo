@@ -9,10 +9,14 @@
     Return undefined if the index doesn't exist
 ✔ pop() @done(26-05-02 09:24)
     Remove the head node and return the value
-☐ contains(value)
+✔ contains(value) @done(26-05-02 11:06)
 ☐ findIndex(value)
+findIndex(value) returns the index of the node containing the given value. If the value can’t be found in the list, it should return -1. If more than one node has a value matching the given value, it should return the index of the first node with the matching value.
 ☐ toString()
-☐ insertAt()
+toString() represents your LinkedList objects as strings, so you can print them out and preview them in the console. If the list is empty, it should return an empty string. The format should be: ( value ) -> ( value ) -> ( value ) -> null.
+☐ insertAt(index, ...values)
+insertAt(index, ...values) should insert new nodes with the given values at the given index. For example:\
+If the method is called with an index that is out of bounds (below 0 or above the list’s size), throw a RangeError.
 ☐ removeAt(index)
 
 When testing with jest, should the describe block be used to test an entire class, or should a new describe block be used for each function? Or would this depend on the complexity of the class?
