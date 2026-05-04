@@ -176,6 +176,17 @@ describe('Linked List functionality', () => {
             console.log(list.toString());
         });
     });
+
+    describe('RemoveAt', () => {
+        it('Removes at an index', () => {
+            list.removeAt(0);
+            expect(list.at(0)).toEqual('cat');
+
+            list.removeAt(4);
+            expect(list.at(3)).toEqual('snake');
+            expect(list.size()).toEqual(4);
+        });
+    });
 });
 
 describe('Node functionality', () => {

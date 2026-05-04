@@ -3,6 +3,18 @@ export class LinkedList {
     tailNode = null;
     length = 0;
 
+    #nodeAt(index) {
+        if(index < 0 || index > this.size() - 1) return undefined;
+
+        let node = this.headNode;
+
+        for(let i = 0; i < index; i++) {
+            node = node.next;
+        }
+
+        return node;
+    }
+
     append(value) {
         let node = new Node(value, null);
 
@@ -48,13 +60,9 @@ export class LinkedList {
     }
 
     at(index) {
-        if(index < 0 || index > this.size() - 1) return undefined;
+        let node = this.#nodeAt(index);
 
-        let node = this.headNode;
-
-        for(let i = 0; i < index; i++) {
-            node = node.next;
-        }
+        if(node === undefined) return undefined;
 
         return node.value;
     }
@@ -157,6 +165,28 @@ export class LinkedList {
         //If we are inserting at the beginning, nodeBeforeIndex is null
         if(nodeBeforeIndex !== null) nodeBeforeIndex.next = firstNewNode; 
         currentNode.next = indexNode; //Set the next of the end of our new sublist to be the node at the original index point
+    }
+
+    removeAt(index) {
+        if(index < 0 || index >= this.size()) throw new RangeError("This index is out of range");
+
+        if(index === 0) {
+            this.headNode = this.headNode.next;
+            this.length -= 1;
+            return;
+        }
+
+        let indexNode = this.headNode;
+        let nodeBeforeIndex = null;
+
+        //Find the index node
+        for(let i = 0; i < index; i++) {
+            nodeBeforeIndex = indexNode;
+            indexNode = indexNode.next;
+        }
+
+        nodeBeforeIndex.next = indexNode.next;
+        this.length -= 1;
     }
 }
 
