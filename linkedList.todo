@@ -17,6 +17,6 @@ toString() represents your LinkedList objects as strings, so you can print them 
 ✔ insertAt(index, ...values) @done(26-05-02 12:19)
 insertAt(index, ...values) should insert new nodes with the given values at the given index. For example:\
 If the method is called with an index that is out of bounds (below 0 or above the list’s size), throw a RangeError.
-☐ removeAt(index)
+✔ removeAt(index) @done(26-05-04 07:39)
 
 When testing with jest, should the describe block be used to test an entire class, or should a new describe block be used for each function? Or would this depend on the complexity of the class?
